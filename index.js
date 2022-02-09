@@ -7,7 +7,7 @@ app.use(express.json());
 app.use(cors());
 
 // add router for all routes
-const router = require("./routes/router.js");
+const router = require("./src/routes/router.js");
 app.use("/", router);
 
 // handle unhandled 404 requests
@@ -16,6 +16,6 @@ app.use("*", (req, res) => {
 });
 
 // start server
-app.listen(process.env.PORT, () =>
-  console.log(`\x1b[0m[LOG] Server running on port ${process.env.PORT}`)
+app.listen(process.env.PORT || 8080, () =>
+  console.log(`\x1b[0m[LOG] Server running on port ${process.env.PORT || 8080}`)
 );
