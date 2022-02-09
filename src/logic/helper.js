@@ -1,5 +1,6 @@
 function compareRate(prevPrice, lastPrice) {
-  return Math.floor(( lastPrice / prevPrice ) * 100) - 100;
+  let calc = Math.floor(( lastPrice / prevPrice ) * 100) - 100
+  return (prevPrice < 0) ? (calc * -1) : calc;
 }
 
 function calculatePercentageGain(symbolData) {
@@ -19,12 +20,12 @@ function prepareResponse(symbolsData){
   }, "");
 }
 
-//Private
 function sortByTopPercentageGainers(symbolsData) {
-  return symbolsData.sort(function (a, b) {  return a.percentage < b.percentage; })
+  return symbolsData.sort(function (a, b) {  return a.percentage - b.percentage; }).reverse()
 }
 
 module.exports = {
-  calculatePercentageGain,
-  prepareResponse
+  compareRate,
+  prepareResponse,
+  calculatePercentageGain
 };
