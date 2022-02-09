@@ -4,8 +4,11 @@
   "description": "Template for Node.js RestAPIS",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon ./src/index.js",
+    "start": "nodemon ./src/index.js",
     "test": "mocha --reporter spec"
+  },
+  "engines": {
+    "node": "12.x"
   },
   "repository": {
     "type": "git",
