@@ -12,7 +12,10 @@ function getPriceOverTime(req, res, next) {
   let date = undefined;
   
   try {
-    symbols = query.symbols.split(",");
+    symbols = Object.keys(query.symbols.replace(/\s/g, '').toUpperCase().split(",").reduce((acc, sym) => {
+      acc[sym] = sym;
+      return acc;
+    }, {}));
   } catch (e) {
     return res.status(400).send("missing 'symbols' as parameter");
   }
